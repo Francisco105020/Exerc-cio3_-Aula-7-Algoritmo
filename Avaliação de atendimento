@@ -1,0 +1,68 @@
+#include <stdio.h>
+
+int main() {
+    int i;
+    float nota, soma = 0.0, media;
+    int total_clientes = 10;
+
+    printf("=== Sistema de Avaliacao de Atendimento ===\n");
+    
+    // Loop para ler a nota dos 10 clientes
+    for (i = 1; i <= total_clientes; i++) {
+        // Estrutura de repetição para garantir que a nota esteja entre 0 e 10
+        do {
+            printf("Digite a nota do cliente %d (0 a 10): ", i);
+            scanf("%f", &nota);
+            
+            if (nota < 0 || nota > 10) {
+                printf("Nota invalida! Digite um valor entre 0 e 10.\n");
+            }
+        } while (nota < 0 || nota > 10);
+        
+        // Acumula a soma das notas válidas
+        soma += nota;
+    }
+
+    // Calcula a média geral
+    media = soma / total_clientes;
+
+    // Exibe os resultados finais
+    printf("\n========================================\n");
+    printf("Nota media geral do atendimento: %.2f\n", media);
+
+    // Verifica se a média está abaixo de 7 para emitir o alerta
+    if (media < 7.0) {
+        printf("[ALERTA] A media geral esta abaixo de 7.0! O atendimento precisa de melhorias.\n");
+    } else {
+        printf("[SUCESSO] A media geral esta satisfatoria!\n");
+    }
+    printf("========================================\n");
+
+    return 0;
+}
+
+
+
+
+Descrição da Lógica Utilizada:
+Variáveis e Acumulador (soma):
+
+Declaramos a variável nota para armazenar a nota individual, soma para acumular a pontuação total (inicializada com 0.0) e media para armazenar o valor final.
+
+Laço de Repetição for:
+
+O programa executa exatamente 10 vezes (um ciclo para cada cliente), solicitando a nota de forma sequencial.
+
+Validação com do-while:
+
+Para garantir a integridade dos dados, adicionamos uma validação que impede o usuário de digitar notas inválidas (menores que 0 ou maiores que 10). Caso digite errado, o programa avisa e repete a leitura daquele cliente.
+
+Cálculo da Média:
+
+Após coletar todas as notas válidas, a média geral é calculada dividindo a soma total pelo número de clientes (10).
+
+Estrutura Condicional (if/else):
+
+O programa verifica se a variável media é estritamente menor que 7.0. Se for, exibe a mensagem de alerta destacando que o atendimento precisa de atenção. Caso contrário, indica que o resultado está satisfatório.
+
+
